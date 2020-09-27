@@ -1,0 +1,25 @@
+.LoginDash {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.loginHeading {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+}
+
+.loginSPAN {
+  font-weight: 500;
+  font-size: 32px;
+}
+
+/* .loginForm {
+} */
+
+.dashboard {
+  padding-left: 500px;
+  padding-top: 0.5in;
+}

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quotely App</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link
+      rel="stylesheet"
+      href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css"
+    />
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-auth.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-analytics.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyAOkFhvAGG0v7Z6NN16HWv1StMwn9odwj4",
+        authDomain: "quotely-app.firebaseapp.com",
+        databaseURL: "https://quotely-app.firebaseio.com",
+        projectId: "quotely-app",
+        storageBucket: "quotely-app.appspot.com",
+        messagingSenderId: "298951958614",
+        appId: "1:298951958614:web:894c55dec2d065795f1bf7",
+        measurementId: "G-0EG1M88829",
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+    </script>
+    <script src="fire43io5y34uiyrtuiyi34wy.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <section class="LoginDash" id="login">
+      <span class="loginHeading">Login </span
+      ><span class="loginSPAN">to Quotely.</span>
+      <span id="errorMessage" style="color: red;"></span><br /><br />
+      <div class="loginForm">
+        <div
+          class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+        >
+          <input class="mdl-textfield__input" type="email" id="Email" />
+          <label class="mdl-textfield__label" for="Email"
+            >Enter your Email Id</label
+          >
+        </div>
+        <br />
+        <div
+          class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+        >
+          <input class="mdl-textfield__input" type="password" id="Password" />
+          <label class="mdl-textfield__label" for="Password"
+            >Enter your Password</label
+          >
+        </div>
+        <br /><br />
+        <button
+          id="loginBTN"
+          onclick="startLogin()"
+          style="background-color: #2f4aa3; color: #fff; border-radius: 8px;"
+          class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"
+        >
+          Procced.
+        </button>
+      </div>
+    </section>
+  </body>
+  <script>
+    var user = firebase.auth().currentUser;
+
+    if (user) {
+      // User is signed in.
+      window.location.href = "/";
+    } else {
+      // No user is signed in.
+      console.log("User Is Not Signed!");
+    }
+
+    function startLogin() {
+      let Email = document.getElementById("Email").value;
+      let Password = document.getElementById("Password").value;
+
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(Email, Password)
+        .then(function () {
+          window.location.href = "/";
+        })
+        .catch(function (error) {
+          var errorMessageText = document.getElementById("errorMessage")
+            .innerText;
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          // ...
+          errorMessageText =
+            "Error Code: " + errorCode + "<br> Error Message: " + errorMessage;
+        });
+    }
+  </script>
+</html>
